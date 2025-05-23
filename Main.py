@@ -2,6 +2,8 @@ from customtkinter import *
 
 root = CTk()
 
+root.title("Clothify")
+
 root.geometry("600x400")	
 
 root.config(bg="#000000")
