@@ -29,4 +29,4 @@ class Chashier:
 
         root.mainloop()
 
-Chashier()
+
