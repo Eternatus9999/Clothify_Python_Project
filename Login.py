@@ -1,6 +1,19 @@
 from customtkinter import *
 
 class Login:
+
+    def back():
+            root.destroy()
+            import Main_Page
+            Main_Page.MainPage()
+
+        def login():
+            print(email.get())
+            print(password.get())
+            root.destroy()
+            import Chashier
+            Chashier.Chashier()
+
     def __init__(self, master):
         self.master = master
         root = CTk()
@@ -15,26 +28,12 @@ class Login:
 
         root.config(bg="#000000")
 
-        def back():
-            root.destroy()
-            import Main_Page
-            Main_Page.MainPage()
-
-        def login():
-            print(email.get())
-            print(password.get())
-            root.destroy()
-            import Chashier
-            Chashier.Chashier()
-
-        login_button = CTkButton(master=root,width=200, height=50, text="Login", font=("Arial", 20), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command=login)
-
-        back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 20), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
+        login_button = CTkButton(master=root,width=200, height=50, text="Login", font=("Arial", 20), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command=self.login)
+        back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 20), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=self.back)
 
         title = CTkLabel(master=root, text="CLOTHIFY", font=("Luckiest Guy", 80, "bold"), fg_color="#000000", text_color="#00FFFF", bg_color="#000000")
-
+        
         email = CTkEntry(master=root, placeholder_text="Email", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40, bg_color="#000000")
-
         password = CTkEntry(master=root, placeholder_text="Password", show="*", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40, bg_color="#000000")
 
         title.place(relx=0.5, rely=0.1, anchor=CENTER)

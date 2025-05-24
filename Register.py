@@ -1,6 +1,11 @@
 from customtkinter import *
 
 class Register:
+
+    def back():
+            root.destroy()
+            import Main_Page
+            Main_Page.MainPage()
     def __init__(self, master):
         self.master = master
         root = CTk()
@@ -15,12 +20,7 @@ class Register:
 
         root.config(bg="#000000")
 
-        def back():
-            root.destroy()
-            import Main_Page
-            Main_Page.MainPage()
-
-        back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 20), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
+        back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 20), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=self.back)
 
         title = CTkLabel(master=root, text="CLOTHIFY", font=("Luckiest Guy", 80, "bold"), fg_color="#000000", text_color="#00FFFF", bg_color="#000000")
 
