@@ -20,7 +20,14 @@ class Login:
             import Main_Page
             Main_Page.MainPage()
 
-        login_button = CTkButton(master=root,width=200, height=50, text="Login", font=("Arial", 20), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        def login():
+            print(email.get())
+            print(password.get())
+            root.destroy()
+            import Chashier
+            Chashier.Chashier()
+
+        login_button = CTkButton(master=root,width=200, height=50, text="Login", font=("Arial", 20), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command=login)
 
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 20), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
