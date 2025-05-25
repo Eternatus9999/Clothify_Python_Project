@@ -1,22 +1,15 @@
 from customtkinter import *
 class Chashier:
     def __init__(self):
-
         def back():
             root.destroy()
             import Main_Page
             Main_Page.MainPage()
-        
-        def clicked():
-            frame.configure(fg_color="#FF0000")
-
-        def clicked2():
-            frame.configure(fg_color="#00FF00")
 
         root = CTk()
         root.title("Clothify")
 
-        root.geometry("1400x800")
+        root.geometry("1300x800")
 
         root.resizable(False, False)
 
@@ -28,14 +21,18 @@ class Chashier:
 
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
-        test_button = CTkButton(master=root,width=20, height=30, text="Test", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=clicked)
-        test1_button = CTkButton(master=root,width=20, height=30, text="Test", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=clicked2)
+        add_order_button = CTkButton(master=root, width=20, height=30, text="Add Order", font=("Arial", 28, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        update_order_button = CTkButton(master=root, width=20, height=30, text="Update Order", font=("Arial", 22, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        view_order_button = CTkButton(master=root, width=20, height=30, text="View Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
 
         title.place(relx=0.5, rely=0.05, anchor=CENTER)
         back_button.place(relx=0.1, rely=0.05, anchor=CENTER)
-        frame.place(relx=0.63, rely=0.55, anchor=CENTER)
-        test_button.place(relx=0.5, rely=0.5, anchor=CENTER)
-        test1_button.place(relx=0.5, rely=0.7, anchor=CENTER)
+        frame.place(relx=0.6, rely=0.55, anchor=CENTER)
+
+        add_order_button.place(relx=0.1, rely=0.2, anchor=CENTER)
+        update_order_button.place(relx=0.1, rely=0.26, anchor=CENTER)
+        view_order_button.place(relx=0.1, rely=0.32, anchor=CENTER)
 
         root.mainloop()
 
+Chashier()
