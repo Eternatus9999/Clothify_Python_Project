@@ -6,6 +6,10 @@ class Chashier:
             import Main_Page
             Main_Page.MainPage()
 
+        def add():
+            import Add_Order
+            Add_Order.AddOrder(frame)
+
         root = CTk()
         root.title("Clothify")
 
@@ -21,7 +25,7 @@ class Chashier:
 
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
-        add_order_button = CTkButton(master=root, width=20, height=30, text="Add Order", font=("Arial", 28, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        add_order_button = CTkButton(master=root, width=20, height=30, text="Add Order", font=("Arial", 28, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = add)
         update_order_button = CTkButton(master=root, width=20, height=30, text="Update Order", font=("Arial", 22, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         view_order_button = CTkButton(master=root, width=20, height=30, text="View Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
 
