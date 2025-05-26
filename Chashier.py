@@ -1,5 +1,5 @@
 from customtkinter import *
-class Chashier:
+class Cashier:
     def __init__(self):
         def back():
             root.destroy()
@@ -21,6 +21,8 @@ class Chashier:
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#FFFFFF")
 
+        add()
+
         title = CTkLabel(master=root, text="CLOTHIFY", font=("Luckiest Guy", 80, "bold"), fg_color="#000000", text_color="#00FFFF", bg_color="#000000")
 
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
@@ -38,3 +40,5 @@ class Chashier:
         view_order_button.place(relx=0.1, rely=0.32, anchor=CENTER)
 
         root.mainloop()
+
+Cashier()

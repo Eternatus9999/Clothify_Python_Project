@@ -11,7 +11,7 @@ class Login:
         def login():
             root.destroy()
             import Chashier
-            Chashier.Chashier()
+            Chashier.Cashier()
         
         root = CTk()
 
