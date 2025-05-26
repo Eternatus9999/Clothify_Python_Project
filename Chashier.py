@@ -38,5 +38,3 @@ class Chashier:
         view_order_button.place(relx=0.1, rely=0.32, anchor=CENTER)
 
         root.mainloop()
-
-Chashier()
