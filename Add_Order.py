@@ -16,7 +16,7 @@ class AddOrder:
 
         totalLabel = CTkLabel(master=frame, text=total, width=200, height=50, text_color="#000000", font=("Arial", 30))
 
-        add_order_button = CTkButton(master=frame, width=20, height=50, text="ADD ORDER", font=("Arial", 28, 'bold'), fg_color="#2ED573", text_color="#000000", corner_radius=40)
+        add_order_button = CTkButton(master=frame, width=20, height=50, text="Place Order", font=("Arial", 28, 'bold'), fg_color="#2ED573", text_color="#000000", corner_radius=40)
 
         itemview = CTkFrame(master=frame, width=800, height=400, fg_color="#FFFFFF")
 
