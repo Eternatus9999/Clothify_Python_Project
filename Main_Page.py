@@ -15,9 +15,7 @@ class MainPage:
 
         root.title("Clothify")
 
-        root.geometry("600x400")	
-
-        root.eval('tk::PlaceWindow . center')
+        root.geometry("600x400+700+300")	
 
         root.resizable(False, False)
 

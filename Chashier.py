@@ -17,7 +17,7 @@ class Cashier:
         root = CTk()
         root.title("Clothify")
 
-        root.geometry("1300x800")
+        root.geometry("1300x800+300+100")
 
         root.resizable(False, False)
 

@@ -12,9 +12,7 @@ class Register:
 
         root.title("Clothify")
 
-        root.geometry("800x600")
-
-        root.eval('tk::PlaceWindow . center')
+        root.geometry("800x600+500+200")
 
         root.resizable(False, False)
 
@@ -49,3 +47,5 @@ class Register:
         register_button.place(relx=0.5, rely=0.9, anchor=CENTER)
 
         root.mainloop()
+
+Register()
