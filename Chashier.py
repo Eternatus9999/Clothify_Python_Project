@@ -22,6 +22,10 @@ class Cashier:
             import Update_Product
             Update_Product.UpdateProduct(frame)
 
+        def updateSupplier():
+            import Update_Supplier
+            Update_Supplier.UpdateSupplier(frame)
+
         root = CTk()
         root.title("Clothify")
 
@@ -48,7 +52,7 @@ class Cashier:
         view_product_button = CTkButton(master=root, width=225, height=30, text="View Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         
         add_supplier_button = CTkButton(master=root, width=225, height=30, text="Add Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= addSupplier)
-        update_supplier_button = CTkButton(master=root, width=225, height=30, text="Update Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        update_supplier_button = CTkButton(master=root, width=225, height=30, text="Update Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= updateSupplier)
         view_supplier_button = CTkButton(master=root, width=225, height=30, text="View Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
 
         annual_report_button = CTkButton(master=root, width=225, height=30, text="Annual Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
