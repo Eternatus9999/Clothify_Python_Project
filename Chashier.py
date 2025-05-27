@@ -39,7 +39,7 @@ class Cashier:
         update_product_button = CTkButton(master=root, width=20, height=30, text="Update Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         view_product_button = CTkButton(master=root, width=20, height=30, text="View Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
 
-        title.place(relx=0.5, rely=0.05, anchor=CENTER)
+        title.place(relx=0.5, rely=0.06, anchor=CENTER)
         back_button.place(relx=0.1, rely=0.05, anchor=CENTER)
         frame.place(relx=0.6, rely=0.55, anchor=CENTER)
 
