@@ -12,7 +12,7 @@ class AddSupplier:
         supplierCompany = CTkEntry(master = frame, placeholder_text="Company", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         supplierContact = CTkEntry(master = frame, placeholder_text="Contact", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         
-        add_order_button = CTkButton(master=frame, width=20, height=30, text="Add Supplier", font=("Arial", 40, 'bold'), fg_color="#2ED573", text_color="#000000", corner_radius=40)
+        add_order_button = CTkButton(master=frame, width=20, height=30, text="ADD", font=("Arial", 40, 'bold'), fg_color="#2ED573", text_color="#000000", corner_radius=40)
 
         title.place(relx=0.5, rely=0.1, anchor=CENTER)
 

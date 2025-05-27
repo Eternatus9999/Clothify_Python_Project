@@ -72,4 +72,3 @@ class Cashier:
         daily_report_button.place(relx=0.1, rely=0.92, anchor=CENTER)
 
         root.mainloop()
-
