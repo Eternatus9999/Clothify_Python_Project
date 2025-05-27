@@ -47,5 +47,3 @@ class Register:
         register_button.place(relx=0.5, rely=0.9, anchor=CENTER)
 
         root.mainloop()
-
-Register()

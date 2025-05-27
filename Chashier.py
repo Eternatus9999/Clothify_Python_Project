@@ -31,13 +31,21 @@ class Cashier:
 
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
-        add_order_button = CTkButton(master=root, width=20, height=30, text="Add Order", font=("Arial", 28, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addOrder)
-        update_order_button = CTkButton(master=root, width=20, height=30, text="Update Order", font=("Arial", 22, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
-        view_order_button = CTkButton(master=root, width=20, height=30, text="View Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        add_order_button = CTkButton(master=root, width=225, height=30, text="Add Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addOrder)
+        update_order_button = CTkButton(master=root, width=225, height=30, text="Update Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        view_order_button = CTkButton(master=root, width=225, height=30, text="View Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         
-        add_product_button = CTkButton(master=root, width=20, height=30, text="Add Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addProduct)
+        add_product_button = CTkButton(master=root, width=225, height=30, text="Add Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addProduct)
         update_product_button = CTkButton(master=root, width=20, height=30, text="Update Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
-        view_product_button = CTkButton(master=root, width=20, height=30, text="View Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        view_product_button = CTkButton(master=root, width=225, height=30, text="View Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        
+        add_supplier_button = CTkButton(master=root, width=225, height=30, text="Add Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        update_supplier_button = CTkButton(master=root, width=225, height=30, text="Update Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        view_supplier_button = CTkButton(master=root, width=225, height=30, text="View Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+
+        annual_report_button = CTkButton(master=root, width=225, height=30, text="Annual Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        monthly_report_button = CTkButton(master=root, width=225, height=30, text="Monthly Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        daily_report_button = CTkButton(master=root, width=225, height=30, text="Daily Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
 
         title.place(relx=0.5, rely=0.06, anchor=CENTER)
         back_button.place(relx=0.1, rely=0.05, anchor=CENTER)
@@ -51,6 +59,12 @@ class Cashier:
         update_product_button.place(relx=0.1, rely=0.46, anchor=CENTER)
         view_product_button.place(relx=0.1, rely=0.52, anchor=CENTER)
 
-        root.mainloop()
+        add_supplier_button.place(relx=0.1, rely=0.6, anchor=CENTER)
+        update_supplier_button.place(relx=0.1, rely=0.66, anchor=CENTER)
+        view_supplier_button.place(relx=0.1, rely=0.72, anchor=CENTER)
 
-Cashier()
+        annual_report_button.place(relx=0.1, rely=0.8, anchor=CENTER)
+        monthly_report_button.place(relx=0.1, rely=0.86, anchor=CENTER)
+        daily_report_button.place(relx=0.1, rely=0.92, anchor=CENTER)
+
+        root.mainloop()
