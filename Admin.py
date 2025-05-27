@@ -1,5 +1,5 @@
 from customtkinter import *
-class Cashier:
+class Admin:
     def __init__(self):
         def back():
             root.destroy()
@@ -43,9 +43,9 @@ class Cashier:
 
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
-        add_order_button = CTkButton(master=root, width=225, height=30, text="Add Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addOrder)
-        update_order_button = CTkButton(master=root, width=225, height=30, text="Update Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
-        view_order_button = CTkButton(master=root, width=225, height=30, text="View Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        add_employee_button = CTkButton(master=root, width=225, height=30, text="Add Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addOrder)
+        update_employee_button = CTkButton(master=root, width=225, height=30, text="Update Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        view_employee_button = CTkButton(master=root, width=225, height=30, text="View Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         
         add_product_button = CTkButton(master=root, width=225, height=30, text="Add Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addProduct)
         update_product_button = CTkButton(master=root, width=20, height=30, text="Update Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= updateProduct)
@@ -54,6 +54,10 @@ class Cashier:
         add_supplier_button = CTkButton(master=root, width=225, height=30, text="Add Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= addSupplier)
         update_supplier_button = CTkButton(master=root, width=225, height=30, text="Update Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= updateSupplier)
         view_supplier_button = CTkButton(master=root, width=225, height=30, text="View Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+
+        annual_report_button = CTkButton(master=root, width=225, height=30, text="Annual Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        monthly_report_button = CTkButton(master=root, width=225, height=30, text="Monthly Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        daily_report_button = CTkButton(master=root, width=225, height=30, text="Daily Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
 
         title.place(relx=0.5, rely=0.06, anchor=CENTER)
         back_button.place(relx=0.1, rely=0.05, anchor=CENTER)
@@ -70,5 +74,9 @@ class Cashier:
         add_supplier_button.place(relx=0.1, rely=0.6, anchor=CENTER)
         update_supplier_button.place(relx=0.1, rely=0.66, anchor=CENTER)
         view_supplier_button.place(relx=0.1, rely=0.72, anchor=CENTER)
+
+        annual_report_button.place(relx=0.1, rely=0.8, anchor=CENTER)
+        monthly_report_button.place(relx=0.1, rely=0.86, anchor=CENTER)
+        daily_report_button.place(relx=0.1, rely=0.92, anchor=CENTER)
 
         root.mainloop()
