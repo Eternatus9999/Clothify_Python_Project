@@ -6,9 +6,9 @@ class Admin:
             import Main_Page
             Main_Page.MainPage()
 
-        def addOrder():
-            import Add_Order
-            Add_Order.AddOrder(frame)
+        def addEmployee():
+            import Add_Employee
+            Add_Employee.AddEmployee(frame)
 
         def addProduct():
             import Add_Product
@@ -37,14 +37,14 @@ class Admin:
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#FFFFFF")
 
-        addOrder()
+        addEmployee()
 
         title = CTkLabel(master=root, text="CLOTHIFY", font=("Luckiest Guy", 80, "bold"), fg_color="#000000", text_color="#00FFFF", bg_color="#000000")
 
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
-        add_employee_button = CTkButton(master=root, width=225, height=30, text="Add Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addOrder)
-        update_employee_button = CTkButton(master=root, width=225, height=30, text="Update Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        add_employee_button = CTkButton(master=root, width=225, height=30, text="Add Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addEmployee)
+        update_employee_button = CTkButton(master=root, width=225, height=30, text="Update Employee", font=("Arial", 22, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         view_employee_button = CTkButton(master=root, width=225, height=30, text="View Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         
         add_product_button = CTkButton(master=root, width=225, height=30, text="Add Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addProduct)
@@ -63,9 +63,9 @@ class Admin:
         back_button.place(relx=0.1, rely=0.05, anchor=CENTER)
         frame.place(relx=0.6, rely=0.55, anchor=CENTER)
 
-        add_order_button.place(relx=0.1, rely=0.2, anchor=CENTER)
-        update_order_button.place(relx=0.1, rely=0.26, anchor=CENTER)
-        view_order_button.place(relx=0.1, rely=0.32, anchor=CENTER)
+        add_employee_button.place(relx=0.1, rely=0.2, anchor=CENTER)
+        update_employee_button.place(relx=0.1, rely=0.26, anchor=CENTER)
+        view_employee_button.place(relx=0.1, rely=0.32, anchor=CENTER)
 
         add_product_button.place(relx=0.1, rely=0.4, anchor=CENTER)
         update_product_button.place(relx=0.1, rely=0.46, anchor=CENTER)
