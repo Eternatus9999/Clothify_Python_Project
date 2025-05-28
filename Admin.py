@@ -10,6 +10,10 @@ class Admin:
             import Add_Employee
             Add_Employee.AddEmployee(frame)
 
+        def updateEmployee():
+            import Update_Employee
+            Update_Employee.UpdateEmployee(frame)
+
         def addProduct():
             import Add_Product
             Add_Product.AddProduct(frame)
