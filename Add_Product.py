@@ -27,7 +27,7 @@ class AddProduct:
         productCategory = CTkComboBox(master=frame, values=category, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40, state= 'readonly')
 
         productCategory.set("Mens")
-
+        productSize.set("XXL")
         productSupplier.set("Supplier")
 
         add = CTkButton(master=frame, width=200, text="ADD", font=("Arial", 40, 'bold'), fg_color="#2ED573", text_color="#000000", corner_radius=40, command=add)
