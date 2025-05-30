@@ -14,11 +14,13 @@ class AddProduct:
 
         category = ["Mens", "Womens", "Kids"]
 
+        sizes = ["XXL","XXL","XL","L","M","S","XS"]
+
         title = CTkLabel(master=frame, text="Add Product", font=("Arial", 80, 'bold'), fg_color="#A09E9E", text_color="#000000")
 
         productId = CTkEntry(master=frame, placeholder_text="ID", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         productName = CTkEntry(master=frame, placeholder_text="Name", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
-        productSize = CTkEntry(master=frame, placeholder_text="Size", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
+        productSize = CTkComboBox(master=frame, values=sizes, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40, state= 'readonly')
         productSupplier = CTkComboBox(master=frame, values=suppliers, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40, state= 'readonly')
         productQty = CTkEntry(master=frame, placeholder_text="Quantity", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         productPrice = CTkEntry(master=frame, placeholder_text="Price", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
