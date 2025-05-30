@@ -37,10 +37,3 @@ class ViewProduct:
         delete_button.place(relx=0.8, rely=0.9, anchor=CENTER)
 
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
-
-
-root = CTk()
-root.geometry("1000x680")
-root.title("View Supplier")
-ViewProduct(root)
-root.mainloop()

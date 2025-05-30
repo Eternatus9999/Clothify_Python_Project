@@ -10,17 +10,17 @@ class Admin:
             import Add_Employee
             Add_Employee.AddEmployee(frame)
 
-        def updateEmployee():
-            import Update_Employee
-            Update_Employee.UpdateEmployee(frame)
+        def addSupplier():
+            import Add_Supplier
+            Add_Supplier.AddSupplier(frame)
 
         def addProduct():
             import Add_Product
             Add_Product.AddProduct(frame)
 
-        def addSupplier():
-            import Add_Supplier
-            Add_Supplier.AddSupplier(frame)
+        def updateEmployee():
+            import Update_Employee
+            Update_Employee.UpdateEmployee(frame)
 
         def updateProduct():
             import Update_Product
@@ -29,6 +29,18 @@ class Admin:
         def updateSupplier():
             import Update_Supplier
             Update_Supplier.UpdateSupplier(frame)
+
+        def viewProduct():
+            import View_Product
+            View_Product.ViewProduct(frame)
+
+        def viewSupplier():
+            import View_Supplier
+            View_Supplier.ViewSupplier(frame)
+        
+        def viewEmployee():
+            import View_Employee
+            View_Employee.ViewEmployee(frame)
 
         root = CTk()
         root.title("Clothify")
@@ -48,16 +60,16 @@ class Admin:
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
         add_employee_button = CTkButton(master=root, width=225, height=30, text="Add Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addEmployee)
-        update_employee_button = CTkButton(master=root, width=225, height=30, text="Update Employee", font=("Arial", 22, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
-        view_employee_button = CTkButton(master=root, width=225, height=30, text="View Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        update_employee_button = CTkButton(master=root, width=225, height=30, text="Update Employee", font=("Arial", 22, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = updateEmployee)
+        view_employee_button = CTkButton(master=root, width=225, height=30, text="View Employee", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = viewEmployee)
         
         add_product_button = CTkButton(master=root, width=225, height=30, text="Add Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addProduct)
         update_product_button = CTkButton(master=root, width=20, height=30, text="Update Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= updateProduct)
-        view_product_button = CTkButton(master=root, width=225, height=30, text="View Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        view_product_button = CTkButton(master=root, width=225, height=30, text="View Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= viewProduct)
         
         add_supplier_button = CTkButton(master=root, width=225, height=30, text="Add Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= addSupplier)
         update_supplier_button = CTkButton(master=root, width=225, height=30, text="Update Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= updateSupplier)
-        view_supplier_button = CTkButton(master=root, width=225, height=30, text="View Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        view_supplier_button = CTkButton(master=root, width=225, height=30, text="View Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = viewSupplier)
 
         annual_report_button = CTkButton(master=root, width=225, height=30, text="Annual Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         monthly_report_button = CTkButton(master=root, width=225, height=30, text="Monthly Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
