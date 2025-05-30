@@ -52,7 +52,6 @@ class Cashier:
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
         add_order_button = CTkButton(master=root, width=225, height=30, text="Add Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addOrder)
-        update_order_button = CTkButton(master=root, width=225, height=30, text="Update Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         view_order_button = CTkButton(master=root, width=225, height=30, text="View Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
         
         add_product_button = CTkButton(master=root, width=225, height=30, text="Add Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addProduct)
@@ -69,14 +68,14 @@ class Cashier:
 
         add_order_button.place(relx=0.1, rely=0.2, anchor=CENTER)
         update_order_button.place(relx=0.1, rely=0.26, anchor=CENTER)
-        view_order_button.place(relx=0.1, rely=0.32, anchor=CENTER)
+        view_order_button.place(relx=0.1, rely=0.26, anchor=CENTER)
 
-        add_product_button.place(relx=0.1, rely=0.4, anchor=CENTER)
-        update_product_button.place(relx=0.1, rely=0.46, anchor=CENTER)
-        view_product_button.place(relx=0.1, rely=0.52, anchor=CENTER)
+        add_product_button.place(relx=0.1, rely=0.34, anchor=CENTER)
+        update_product_button.place(relx=0.1, rely=0.4, anchor=CENTER)
+        view_product_button.place(relx=0.1, rely=0.46, anchor=CENTER)
 
-        add_supplier_button.place(relx=0.1, rely=0.6, anchor=CENTER)
-        update_supplier_button.place(relx=0.1, rely=0.66, anchor=CENTER)
-        view_supplier_button.place(relx=0.1, rely=0.72, anchor=CENTER)
+        add_supplier_button.place(relx=0.1, rely=0.54, anchor=CENTER)
+        update_supplier_button.place(relx=0.1, rely=0.6, anchor=CENTER)
+        view_supplier_button.place(relx=0.1, rely=0.66, anchor=CENTER)
 
         root.mainloop()
