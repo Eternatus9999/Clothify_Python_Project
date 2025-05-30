@@ -34,6 +34,10 @@ class Cashier:
             import View_Supplier
             View_Supplier.ViewSupplier(frame)
 
+        def viewOrder():
+            import View_Order
+            View_Order.ViewOrder(frame)
+
         root = CTk()
         root.title("Clothify")
 
@@ -52,7 +56,7 @@ class Cashier:
         back_button = CTkButton(master=root,width=20, height=30, text="←", font=("Arial", 40, 'bold'), fg_color="#000000", text_color="#00FFFF", corner_radius=40, bg_color="#000000",  hover_color="gray", command=back)
 
         add_order_button = CTkButton(master=root, width=225, height=30, text="Add Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addOrder)
-        view_order_button = CTkButton(master=root, width=225, height=30, text="View Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        view_order_button = CTkButton(master=root, width=225, height=30, text="View Order", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= viewOrder)
         
         add_product_button = CTkButton(master=root, width=225, height=30, text="Add Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = addProduct)
         update_product_button = CTkButton(master=root, width=20, height=30, text="Update Product", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= updateProduct)
@@ -67,7 +71,6 @@ class Cashier:
         frame.place(relx=0.6, rely=0.55, anchor=CENTER)
 
         add_order_button.place(relx=0.1, rely=0.2, anchor=CENTER)
-        update_order_button.place(relx=0.1, rely=0.26, anchor=CENTER)
         view_order_button.place(relx=0.1, rely=0.26, anchor=CENTER)
 
         add_product_button.place(relx=0.1, rely=0.34, anchor=CENTER)
