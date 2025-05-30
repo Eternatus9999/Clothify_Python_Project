@@ -1,4 +1,5 @@
 from customtkinter import *
+from tkinter import messagebox
 
 class MainPage:
     def __init__(self):
@@ -15,6 +16,10 @@ class MainPage:
                 Chashier.Cashier()
             else:
                 print("Invalid Email or Password")
+                txtEmail.delete(0, END)
+                txtPassword.delete(0, END)
+                messagebox.showerror("Error", "Invalid Email or Password")
+
         
         root = CTk()
 
