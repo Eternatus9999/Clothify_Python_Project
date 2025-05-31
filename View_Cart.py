@@ -32,4 +32,3 @@ class ViewCart:
         title.place(relx=0.5, rely=0.1, anchor=CENTER)
 
         root.mainloop()
-        
