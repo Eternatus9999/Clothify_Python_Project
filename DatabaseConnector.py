@@ -14,22 +14,22 @@ def init():
         mycursor.execute("DESCRIBE product")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE product (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), size VARCHAR(255), quantity INT, price INT, category VARCHAR(255), supplier VARCHAR(255))")
+        mycursor.execute("CREATE TABLE product (id VARCHAR PRIMARY KEY, name VARCHAR(255), size VARCHAR(255), quantity INT, price INT, category VARCHAR(255), supplier VARCHAR(255))")
     try:
         mycursor.execute("DESCRIBE orders")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE orders (id INT AUTO_INCREMENT PRIMARY KEY, customer_name VARCHAR(255), total_price INT)")
+        mycursor.execute("CREATE TABLE orders (id VARCHAR PRIMARY KEY, customer_name VARCHAR(255), total_price INT, date DATE)")
     try:
         mycursor.execute("DESCRIBE supplier")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE supplier (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), company VARCHAR(255), contact VARCHAR(255))")
+        mycursor.execute("CREATE TABLE supplier (id VARCHAR PRIMARY KEY, name VARCHAR(255), company VARCHAR(255), contact VARCHAR(255))")
     try:
         mycursor.execute("DESCRIBE employee")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE employee (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255), password VARCHAR(255))")
+        mycursor.execute("CREATE TABLE employee (id VARCHAR PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255), password VARCHAR(255))")
 
     db.commit()
 
