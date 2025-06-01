@@ -15,7 +15,7 @@ class ViewCart:
 
         title = CTkLabel(master=root, text="View Cart", font=("Arial", 80, 'bold'), fg_color="#000000", text_color="#00FFFF", bg_color="#000000")
 
-        totalLabel = CTkLabel(master=root, text=total, width=200, height=50, text_color="#FFFFFF", fg_color="#000000", font=("Arial", 30))
+        totalLabel = CTkLabel(master=root, text="Total: "+ str(total), width=200, height=50, text_color="#FFFFFF", fg_color="#000000", font=("Arial", 30))
 
         table = ttk.Treeview(root, height=20, columns=("ID", "Name", "Quantity", "Price"), show="headings")
 
@@ -23,6 +23,11 @@ class ViewCart:
         table.heading("Name", text="Name")
         table.heading("Quantity", text="Quantity")
         table.heading("Price", text="Price")
+
+        table.column("ID", anchor=CENTER)
+        table.column("Name", anchor=CENTER)
+        table.column("Quantity", anchor=CENTER)
+        table.column("Price", anchor=CENTER)
 
         for item in cart:
             table.insert("", "end", values=item)

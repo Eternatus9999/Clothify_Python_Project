@@ -1,15 +1,19 @@
 from customtkinter import *
 from tkinter import ttk
 
+import DatabaseConnector
+
 class AddOrder:
 
     def __init__(self, root):
 
-        self.total = "Total : "
+        self.total = 0
 
         method = ["Cash", "Debit", "Credit"]
 
         self.cart = []
+
+        items = DatabaseConnector.viewProduct()
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#A09E9E")
 
@@ -18,11 +22,10 @@ class AddOrder:
         self.paymentMethod = CTkComboBox(master=frame, values=method, width=200, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40, state= 'readonly')
         self.paymentMethod.set("Cash")
 
-        totalLabel = CTkLabel(master=frame, text=self.total, width=200, height=50, text_color="#000000", font=("Arial", 30))
-
+        self.totalLabel = CTkLabel(master=frame, text=("Total: "+str(self.total)), width=200, height=50, text_color="#000000", font=("Arial", 30))
         add_order_button = CTkButton(master=frame, width=20, height=50, text="Place Order", font=("Arial", 28, 'bold'), fg_color="#2ED573", text_color="#000000", corner_radius=40)
 
-        add_to_cart = CTkButton(master=frame, width=20, height=50, text="Add to Cart", font=("Arial", 28, 'bold'), fg_color="#3742FA", text_color="#000000", corner_radius=40)
+        add_to_cart = CTkButton(master=frame, width=20, height=50, text="Add to Cart", font=("Arial", 28, 'bold'), fg_color="#3742FA", text_color="#000000", corner_radius=40, command = self.add)
 
         view_cart = CTkButton(master=frame, width=200, height=50, text="View Cart", font=("Arial", 28, 'bold'), fg_color="#FFA502", text_color="#000000", corner_radius=40, command = self.viewcart)
 
@@ -34,14 +37,22 @@ class AddOrder:
 
         self.searchitem.bind("<KeyRelease>", self.search)
 
-        itemtable = ttk.Treeview(itemview, columns=("ID", "Name", "Quantity", "Price"), show='headings', height=15)
+        self.itemtable = ttk.Treeview(itemview, columns=("ID", "Name", "Quantity", "Price"), show='headings', height=15)
 
-        itemtable.heading("ID", text="ID")
-        itemtable.heading("Name", text="Name")
-        itemtable.heading("Quantity", text="Quantity")
-        itemtable.heading("Price", text="Price")
+        self.itemtable.heading("ID", text="ID", anchor=CENTER)
+        self.itemtable.heading("Name", text="Name", anchor=CENTER)
+        self.itemtable.heading("Quantity", text="Quantity", anchor=CENTER)
+        self.itemtable.heading("Price", text="Price", anchor=CENTER)
 
-        itemtable.place(relx=0.5, rely=0.595, anchor=CENTER)
+        self.itemtable.column("ID", width=100, anchor=CENTER)
+        self.itemtable.column("Name", width=200, anchor=CENTER)
+        self.itemtable.column("Quantity", width=200, anchor=CENTER)
+        self.itemtable.column("Price", width=200, anchor=CENTER)
+
+        for item in items:
+            self.itemtable.insert("", "end", values=item)
+
+        self.itemtable.place(relx=0.5, rely=0.595, anchor=CENTER)
         self.searchitem.place(relx=0.5, rely=0.1, anchor=CENTER)
 
         self.orderId.place(relx=0.2, rely=0.1, anchor=CENTER)
@@ -49,7 +60,7 @@ class AddOrder:
         self.paymentMethod.place(relx=0.64, rely=0.1, anchor=CENTER)
 
         itemview.place(relx=0.4, rely=0.5, anchor=CENTER)
-        totalLabel.place(relx=0.15, rely=0.9, anchor=CENTER)
+        self.totalLabel.place(relx=0.15, rely=0.9, anchor=CENTER)
         add_order_button.place(relx=0.82, rely=0.9, anchor=CENTER)
 
         add_to_cart.place(relx=0.88, rely=0.3, anchor=CENTER)
@@ -60,8 +71,14 @@ class AddOrder:
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def viewcart(self):
-            import View_Cart
-            View_Cart.ViewCart(self.total,self.cart)
+        import View_Cart
+        View_Cart.ViewCart(self.total,self.cart)
 
     def search(self, event):
-            print(self.searchitem.get())
+        print(self.searchitem.get())
+
+    def add(self):
+        selected = self.itemtable.item(self.itemtable.selection(),"values")
+        self.cart.append((selected[0], selected[1], self.qty.get(), selected[3]))
+        self.total += int(selected[3]) * int(self.qty.get())
+        self.totalLabel.configure(text=("Total: "+str(self.total)))
