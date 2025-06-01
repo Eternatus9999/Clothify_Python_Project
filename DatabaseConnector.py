@@ -9,46 +9,46 @@ db = mysql.connector.connect(
 
 mycursor = db.cursor()
 
-def init():
+def load():
     try:
         mycursor.execute("DESCRIBE product")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE product (id VARCHAR PRIMARY KEY, name VARCHAR(255), size VARCHAR(255), quantity INT, price INT, category VARCHAR(255), supplier VARCHAR(255))")
+        mycursor.execute("CREATE TABLE product (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), size VARCHAR(255), quantity INT, price INT, category VARCHAR(255), supplier VARCHAR(255))")
     try:
         mycursor.execute("DESCRIBE orders")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE orders (id VARCHAR PRIMARY KEY, customer_name VARCHAR(255), total_price INT, date DATE)")
+        mycursor.execute("CREATE TABLE orders (id VARCHAR(255) PRIMARY KEY, customer_name VARCHAR(255), method VARCHAR(255), total_price INT, order_date DATE)")
     try:
         mycursor.execute("DESCRIBE supplier")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE supplier (id VARCHAR PRIMARY KEY, name VARCHAR(255), company VARCHAR(255), contact VARCHAR(255))")
+        mycursor.execute("CREATE TABLE supplier (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), company VARCHAR(255), contact VARCHAR(255))")
     try:
         mycursor.execute("DESCRIBE employee")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE employee (id VARCHAR PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255), password VARCHAR(255))")
+        mycursor.execute("CREATE TABLE employee (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255), password VARCHAR(255))")
 
     db.commit()
 
 # Insert Queries
 
-def insertProduct(name,size,quantity,price,category,supplier):
-    mycursor.execute("INSERT INTO product (name, size, quantity, price, category, supplier) VALUES (%s, %s, %s, %s, %s, %s)", (name,size,quantity,price,category,supplier))
+def insertProduct(product_id,name,size,quantity,price,category,supplier):
+    mycursor.execute("INSERT INTO product (id, name, size, quantity, price, category, supplier) VALUES (%s, %s, %s, %s, %s, %s, %s)", (product_id,name,size,quantity,price,category,supplier))
     db.commit()
 
-def insertSupplier(name,company,contact):
-    mycursor.execute("INSERT INTO supplier (name, company, contact) VALUES (%s, %s, %s)", (name,company,contact))
+def insertSupplier(supplier_id,name,company,contact):
+    mycursor.execute("INSERT INTO supplier (id, name, company, contact) VALUES (%s, %s, %s, %s)", (supplier_id,name,company,contact))
     db.commit()
 
-def insertOrder(customer_name,total_price):
-    mycursor.execute("INSERT INTO orders (customer_name, total_price) VALUES (%s, %s)", (customer_name,total_price))
+def insertOrder(order_id,customer_name,method,total_price,date):
+    mycursor.execute("INSERT INTO orders (id,customer_name, method, total_price, order_date) VALUES (%s, %s, %s, %s, %s)", (order_id, customer_name, method, total_price, date))
     db.commit()
 
-def insertEmployee(name,email,address,contact,password):
-    mycursor.execute("INSERT INTO employee (name, email, address, contact, password) VALUES (%s, %s, %s, %s, %s)", (name,email,address,contact,password))
+def insertEmployee(employee_id,name,email,address,contact,password):
+    mycursor.execute("INSERT INTO employee (id, name, email, address, contact, password) VALUES (%s, %s, %s, %s, %s, %s)", (employee_id,name,email,address,contact,password))
     db.commit()
 
 # Update Queries
@@ -56,6 +56,11 @@ def insertEmployee(name,email,address,contact,password):
 def updateProduct(id,name,size,quantity,price,category,supplier):
     mycursor.execute("UPDATE product SET name = %s, size = %s, quantity = %s, price = %s, category = %s, supplier = %s WHERE id = %s", (name,size,quantity,price,category,supplier,id))
     db.commit()
+
+def updateAllProducts(items):
+    for item in items:
+        mycursor.execute("UPDATE product SET quantity = %s WHERE id = %s", (item[3],item[0]))
+        db.commit()
 
 def updateSupplier(id,name,company,contact):
     mycursor.execute("UPDATE supplier SET name = %s, company = %s, contact = %s WHERE id = %s", (name,company,contact,id))
@@ -104,3 +109,34 @@ def viewOrder():
     mycursor.execute("SELECT * FROM orders")
     result = mycursor.fetchall()
     return result
+
+# Get Id
+
+def getOrderId():
+    mycursor.execute("SELECT id FROM orders ORDER BY id DESC LIMIT 1")
+    result = mycursor.fetchone()
+    if result == None:
+        return ("OR0",)
+    return result
+
+def getProductId():
+    mycursor.execute("SELECT id FROM product ORDER BY id DESC LIMIT 1")
+    result = mycursor.fetchone()
+    if result == None:
+        return ("P0",)
+    return result
+
+def getSupplierId():
+    mycursor.execute("SELECT id FROM supplier ORDER BY id DESC LIMIT 1")
+    result = mycursor.fetchone()
+    if result == None:
+        return ("S0",)
+    return result
+
+def getEmployeeId():
+    mycursor.execute("SELECT id FROM employee ORDER BY id DESC LIMIT 1")
+    result = mycursor.fetchone()
+    if result == None:
+        return ("E0",)
+    return result
+
