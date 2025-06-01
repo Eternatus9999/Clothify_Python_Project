@@ -31,7 +31,7 @@ class MainPage:
         self.root.mainloop()
 
     def login(self):
-            userid = int(self.txtUser.get())
+            userid = self.txtUser.get()
             password = self.txtPassword.get()
             if(userid == "admin" and password == "admin"):
                 self.root.destroy()
