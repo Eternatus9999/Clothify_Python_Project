@@ -1,10 +1,13 @@
 from customtkinter import *
 from tkinter import ttk
 
+
+import DatabaseConnector
+
 class ViewSupplier:
     def __init__(self,root):
 
-        self.suppliers = []
+        self.suppliers = DatabaseConnector.viewSupplier()
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#A09E9E")
 
@@ -33,4 +36,5 @@ class ViewSupplier:
     def delete(self):
             selected_item = self.table.selection()
             for item in selected_item:
+                DatabaseConnector.deleteSupplier(self.table.item(item)['values'][0])
                 self.table.delete(item)
