@@ -1,10 +1,12 @@
 from customtkinter import *
 from tkinter import ttk
 
+import DatabaseConnector
+
 class ViewEmployee:
     def __init__(self,root):
 
-        self.employees = []
+        self.employees = DatabaseConnector.viewEmployee()
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#A09E9E")
 
@@ -34,4 +36,5 @@ class ViewEmployee:
     def delete(self):
             selected_item = self.table.selection()
             for item in selected_item:
+                DatabaseConnector.deleteEmployee(self.table.item(item)['values'][0])
                 self.table.delete(item)
