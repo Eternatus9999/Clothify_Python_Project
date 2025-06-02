@@ -1,10 +1,12 @@
 from customtkinter import *
 from tkinter import ttk
 
+import DatabaseConnector
+
 class ViewProduct:
     def __init__(self,root):
 
-        self.products = []
+        self.products = DatabaseConnector.viewProduct()
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#A09E9E")
 
@@ -22,6 +24,14 @@ class ViewProduct:
         self.table.heading("Category", text="Category")
         self.table.heading("Supplier", text="Supplier")
 
+        self.table.column("ID",width=100, anchor=CENTER)
+        self.table.column("Name",width=100, anchor=CENTER)
+        self.table.column("Size",width=100, anchor=CENTER)
+        self.table.column("Quantity",width=100, anchor=CENTER)
+        self.table.column("Price",width=100, anchor=CENTER)
+        self.table.column("Category",width=100, anchor=CENTER)
+        self.table.column("Supplier",width=100, anchor=CENTER)
+
         for product in self.products:
             self.table.insert("", "end", values=product)
         
@@ -36,4 +46,5 @@ class ViewProduct:
     def delete(self):
             selected_item = self.table.selection()
             for item in selected_item:
+                DatabaseConnector.deleteProduct(self.table.item(item)['values'][0])
                 self.table.delete(item)
