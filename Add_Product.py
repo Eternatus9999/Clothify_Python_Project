@@ -1,5 +1,7 @@
 from customtkinter import *
 
+import DatabaseConnector
+
 class AddProduct:
     def __init__(self,root):
 
@@ -44,4 +46,4 @@ class AddProduct:
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def addProduct(self):
-        print(self.productId.get(), self.productName.get(), self.productSize.get(), self.productSupplier.get(), self.productQty.get(), self.productPrice.get(), self.productCategory.get())
+        DatabaseConnector.insertProduct(self.productId.get(), self.productName.get(), self.productSize.get(), self.productQty.get(),  self.productPrice.get(), self.productCategory.get(), self.productSupplier.get())

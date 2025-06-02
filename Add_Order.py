@@ -41,19 +41,21 @@ class AddOrder:
 
         self.searchitem.bind("<KeyRelease>", self.search)
 
-        self.itemtable = ttk.Treeview(itemview, columns=("ID", "Name", "Size", "Quantity", "Price"), show='headings', height=15)
+        self.itemtable = ttk.Treeview(itemview, columns=("ID", "Name", "Size", "Quantity", "Price", "Category"), show='headings', height=15)
 
         self.itemtable.heading("ID", text="ID", anchor=CENTER)
         self.itemtable.heading("Name", text="Name", anchor=CENTER)
         self.itemtable.heading("Size", text="Size", anchor=CENTER)
         self.itemtable.heading("Quantity", text="Quantity", anchor=CENTER)
         self.itemtable.heading("Price", text="Price", anchor=CENTER)
+        self.itemtable.heading("Category", text="Category", anchor=CENTER)
 
-        self.itemtable.column("ID", width=100, anchor=CENTER)
-        self.itemtable.column("Name", width=200, anchor=CENTER)
+        self.itemtable.column("ID", width=50, anchor=CENTER)
+        self.itemtable.column("Name", width=150, anchor=CENTER)
         self.itemtable.column("Size", width=100, anchor=CENTER)
         self.itemtable.column("Quantity", width=150, anchor=CENTER)
         self.itemtable.column("Price", width=150, anchor=CENTER)
+        self.itemtable.column("Category", width=100, anchor=CENTER)
 
         for item in self.items:
             self.itemtable.insert("", "end", values=item)
