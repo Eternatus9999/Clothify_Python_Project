@@ -1,5 +1,7 @@
 from customtkinter import *
 
+import DatabaseConnector
+
 class AddSupplier:
     def __init__(self,root):
 
@@ -26,4 +28,4 @@ class AddSupplier:
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def addSupplier(self):
-        print(self.supplierId.get(), self.supplierName.get(), self.supplierCompany.get(), self.supplierContact.get())
+        DatabaseConnector.insertSupplier(self.supplierId.get(), self.supplierName.get(), self.supplierCompany.get(), self.supplierContact.get())
