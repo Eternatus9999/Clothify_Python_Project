@@ -22,6 +22,12 @@ class ViewEmployee:
         self.table.heading("Address", text="Address")
         self.table.heading("Contact", text="Contact")
 
+        self.table.column("ID",width=100, anchor=CENTER)
+        self.table.column("Name",width=100, anchor=CENTER)
+        self.table.column("Email",width=100, anchor=CENTER)
+        self.table.column("Address",width=100, anchor=CENTER)
+        self.table.column("Contact",width=100, anchor=CENTER)
+
         for employee in self.employees:
             self.table.insert("", "end", values=employee)
         
