@@ -1,4 +1,7 @@
 from customtkinter import *
+from tkinter import messagebox
+
+import DatabaseConnector
 
 class UpdateSupplier:
     def __init__(self,root):
@@ -35,4 +38,5 @@ class UpdateSupplier:
         print(self.supplierId.get())
     
     def updateSupplier(self):
-        print(self.supplierId.get(),self.supplierName.get(),self.supplierCompany.get(),self.supplierContact.get())
+        DatabaseConnector.updateSupplier(self.supplierId.get(),self.supplierName.get(),self.supplierCompany.get(),self.supplierContact.get())
+        messagebox.shoeinfo("Success", "Supplier updated successfully")
