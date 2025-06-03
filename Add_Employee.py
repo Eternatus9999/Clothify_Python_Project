@@ -1,4 +1,5 @@
 from customtkinter import *
+from tkinter import messagebox
 
 import DatabaseConnector
 
@@ -34,7 +35,10 @@ class AddEmployee:
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def addEmployee(self):
-        if(self.employeePassword.get() == self.employeeRePassword.get()):
+        if(self.employeeName.get() == "" or self.employeeEmail.get() == "" or self.employeeAddress.get() == "" or self.employeeContact.get() == "" or self.employeePassword.get() == "" or self.employeeRePassword.get() == ""):
+            messagebox.showerror("Error", "All fields are required")
+        elif(self.employeePassword.get() == self.employeeRePassword.get()):
             DatabaseConnector.insertEmployee(self.employeeId.get(), self.employeeName.get(), self.employeeEmail.get(), self.employeeAddress.get(), self.employeeContact.get(), self.employeePassword.get())
+            messagebox.showinfo("Success", "Employee added successfully")
         else:
-            print("Password does not match")
+            messagebox.showerror("Error", "Password does not match")
