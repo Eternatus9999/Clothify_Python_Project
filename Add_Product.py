@@ -50,5 +50,10 @@ class AddProduct:
         if(self.productName.get() != "" and self.productSize.get() != "" and self.productSupplier.get() != "" and self.productQty.get() != "" and self.productPrice.get() != "" and self.productCategory.get() != ""):
             DatabaseConnector.insertProduct(self.productId.get(), self.productName.get(), self.productSize.get(), self.productQty.get(),  self.productPrice.get(), self.productCategory.get(), self.productSupplier.get())
             messagebox.showinfo("Success", "Product added successfully")
+            self.productName.delete(0, END)
+            self.productSize.delete(0, END)
+            self.productSupplier.delete(0, END)
+            self.productQty.delete(0, END)
+            self.productPrice.delete(0, END)
         else:
             messagebox.showerror("Error", "All fields are required")
