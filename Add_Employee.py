@@ -40,5 +40,11 @@ class AddEmployee:
         elif(self.employeePassword.get() == self.employeeRePassword.get()):
             DatabaseConnector.insertEmployee(self.employeeId.get(), self.employeeName.get(), self.employeeEmail.get(), self.employeeAddress.get(), self.employeeContact.get(), self.employeePassword.get())
             messagebox.showinfo("Success", "Employee added successfully")
+            self.employeeName.delete(0, END)
+            self.employeeEmail.delete(0, END)
+            self.employeeAddress.delete(0, END)
+            self.employeeContact.delete(0, END)
+            self.employeePassword.delete(0, END)
+            self.employeeRePassword.delete(0, END)
         else:
             messagebox.showerror("Error", "Password does not match")
