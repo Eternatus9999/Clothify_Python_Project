@@ -110,6 +110,7 @@ class AddOrder:
             self.editTable()
             self.cart = []
             DatabaseConnector.updateAllProducts(self.items)
+            messagebox.showinfo("Success", "Order Placed Successfully")
         else:
             messagebox.showerror("Error", "Cart is empty")
 

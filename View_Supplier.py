@@ -1,5 +1,5 @@
 from customtkinter import *
-from tkinter import ttk
+from tkinter import ttk, messagebox
 
 
 import DatabaseConnector
@@ -34,7 +34,8 @@ class ViewSupplier:
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def delete(self):
-            selected_item = self.table.selection()
-            for item in selected_item:
-                DatabaseConnector.deleteSupplier(self.table.item(item)['values'][0])
-                self.table.delete(item)
+        selected_item = self.table.selection()
+        for item in selected_item:
+            DatabaseConnector.deleteSupplier(self.table.item(item)['values'][0])
+            self.table.delete(item)
+        messagebox.showinfo("Success", "Supplier deleted successfully")

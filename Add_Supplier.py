@@ -1,4 +1,5 @@
 from customtkinter import *
+from tkinter import messagebox
 
 import DatabaseConnector
 
@@ -28,4 +29,8 @@ class AddSupplier:
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def addSupplier(self):
-        DatabaseConnector.insertSupplier(self.supplierId.get(), self.supplierName.get(), self.supplierCompany.get(), self.supplierContact.get())
+        if(self.supplierName.get() == "" or self.supplierCompany.get() == "" or self.supplierContact.get() == ""):
+            messagebox.showerror("Error", "Please fill all the details")
+        else:
+            DatabaseConnector.insertSupplier(self.supplierId.get(), self.supplierName.get(), self.supplierCompany.get(), self.supplierContact.get())
+            messagebox.showinfo("Success", "Supplier added successfully")
