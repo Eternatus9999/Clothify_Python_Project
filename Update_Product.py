@@ -8,11 +8,11 @@ class UpdateProduct:
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#A09E9E")
 
-        self.suppliers = ["Supplier"]
+        self.suppliers = self.Convert(DatabaseConnector.getSupplierIds())
 
         sizes = ["XXL","XXL","XL","L","M","S","XS"]
 
-        self.products = ["ID"]
+        self.products = self.Convert(DatabaseConnector.getProductIds())
 
         category = ["Mens", "Womens", "Kids"]
 
@@ -26,9 +26,9 @@ class UpdateProduct:
         self.productPrice = CTkEntry(master=frame, placeholder_text="Price", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         self.productCategory = CTkComboBox(master=frame, values=category, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40, state= 'readonly')
 
-        self.productCategory.set("Mens")
+        self.productCategory.set("Category")
 
-        self.productSize.set("XXL")
+        self.productSize.set("Size")
 
         self.productSupplier.set("Supplier")
 
@@ -54,8 +54,30 @@ class UpdateProduct:
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def search(self):
-        print(self.productId.get())
+        product = DatabaseConnector.getProduct(self.productId.get())
+        self.productName.delete(0, END)
+        self.productQty.delete(0, END)
+        self.productPrice.delete(0, END)
+
+        self.productName.insert(0, product[1])  
+        self.productSize.set(product[2])
+        self.productSupplier.set(product[6])
+        self.productQty.insert(0, product[3])
+        self.productPrice.insert(0, product[4])
+        self.productCategory.set(product[5])
 
     def updateProduct(self):
         DatabaseConnector.updateProduct(self.productId.get(), self.productName.get(), self.productSize.get(), self.productQty.get(), self.productPrice.get(), self.productCategory.get(), self.productSupplier.get())
         messagebox.showinfo("Success", "Product updated successfully")
+        self.productName.delete(0, END)
+        self.productQty.delete(0, END)
+        self.productPrice.delete(0, END)
+        self.productSize.set("Size")
+        self.productSupplier.set("Supplier")
+        self.productCategory.set("Category")
+
+    def Convert(self, list1): 
+        list2 = [] 
+        for x in list1: 
+            list2.append(x[0]) 
+        return list2
