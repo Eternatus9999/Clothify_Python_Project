@@ -1,4 +1,7 @@
 from customtkinter import *
+from tkinter import messagebox
+
+import DatabaseConnector
 
 class UpdateProduct:
     def __init__(self,root):
@@ -54,4 +57,5 @@ class UpdateProduct:
         print(self.productId.get())
 
     def updateProduct(self):
-        print(self.productId.get(), self.productName.get(), self.productSize.get(), self.productSupplier.get(), self.productQty.get(), self.productPrice.get(), self.productCategory.get())
+        DatabaseConnector.updateProduct(self.productId.get(), self.productName.get(), self.productSize.get(), self.productQty.get(), self.productPrice.get(), self.productCategory.get(), self.productSupplier.get())
+        messagebox.showinfo("Success", "Product updated successfully")
