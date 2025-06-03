@@ -1,4 +1,7 @@
 from customtkinter import *
+from tkinter import messagebox
+
+import DatabaseConnector
 
 class UpdateEmployee:
     def __init__(self,root):
@@ -40,4 +43,8 @@ class UpdateEmployee:
         print(self.employeeId.get())
 
     def updateEmployee(self):
-        print(self.employeeId.get(),self.employeeName.get(),self.employeeEmail.get(),self.employeeAddress.get(),self.employeeContact.get(),self.employeePassword.get(),self.employeeRePassword.get())
+        if(self.employeePassword.get() == self.employeeRePassword.get()):
+            DatabaseConnector.updateEmployee(self.employeeId.get(),self.employeeName.get(),self.employeeEmail.get(),self.employeeAddress.get(),self.employeeContact.get(),self.employeePassword.get())
+            messagebox.showinfo("Success", "Employee updated successfully")
+        else:
+            messagebox.showerror("Error", "Password does not match")
