@@ -116,27 +116,61 @@ def getOrderId():
     mycursor.execute("SELECT id FROM orders ORDER BY id DESC LIMIT 1")
     result = mycursor.fetchone()
     if result == None:
-        return ("OR0",)
+        return (0,)
     return result
 
 def getProductId():
     mycursor.execute("SELECT id FROM product ORDER BY id DESC LIMIT 1")
     result = mycursor.fetchone()
     if result == None:
-        return ("P0",)
+        return (0,)
     return result
 
 def getSupplierId():
     mycursor.execute("SELECT id FROM supplier ORDER BY id DESC LIMIT 1")
     result = mycursor.fetchone()
     if result == None:
-        return ("S0",)
+        return (,)
     return result
 
 def getEmployeeId():
     mycursor.execute("SELECT id FROM employee ORDER BY id DESC LIMIT 1")
     result = mycursor.fetchone()
     if result == None:
-        return ("E0",)
+        return (0,)
     return result
 
+# Get Details
+
+def getProduct(id):
+    mycursor.execute("SELECT * FROM product WHERE id = %s", (id,))
+    result = mycursor.fetchone()
+    return result
+
+def getSupplier(id):
+    mycursor.execute("SELECT * FROM supplier WHERE id = %s", (id,))
+    result = mycursor.fetchone()
+    return result
+
+def getEmployee(id):
+    mycursor.execute("SELECT * FROM employee WHERE id = %s", (id,))
+    result = mycursor.fetchone()
+    return result
+
+
+# Get Ids
+
+def getProductIds():
+    mycursor.execute("SELECT id FROM product")
+    result = mycursor.fetchall()
+    return result
+
+def getSupplierIds():
+    mycursor.execute("SELECT id FROM supplier")
+    result = mycursor.fetchall()
+    return result
+
+def getEmployeeIds():
+    mycursor.execute("SELECT id FROM employee")
+    result = mycursor.fetchall()
+    return result
