@@ -10,7 +10,7 @@ class AddProduct:
 
         index = 0 
 
-        self.suppliers = ["Supplier"]
+        self.suppliers = self.Convert(DatabaseConnector.getSupplierIds())
 
         category = ["Mens", "Womens", "Kids"]
 
@@ -26,8 +26,8 @@ class AddProduct:
         self.productPrice = CTkEntry(master=frame, placeholder_text="Price", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         self.productCategory = CTkComboBox(master=frame, values=category, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40, state= 'readonly')
 
-        self.productCategory.set("Mens")
-        self.productSize.set("XXL")
+        self.productCategory.set("Category")
+        self.productSize.set("Size")
         self.productSupplier.set("Supplier")
 
         add = CTkButton(master=frame, width=200, text="ADD", font=("Arial", 40, 'bold'), fg_color="#2ED573", text_color="#000000", corner_radius=40, command=self.addProduct)
@@ -51,9 +51,16 @@ class AddProduct:
             DatabaseConnector.insertProduct(self.productId.get(), self.productName.get(), self.productSize.get(), self.productQty.get(),  self.productPrice.get(), self.productCategory.get(), self.productSupplier.get())
             messagebox.showinfo("Success", "Product added successfully")
             self.productName.delete(0, END)
-            self.productSize.delete(0, END)
-            self.productSupplier.delete(0, END)
+            self.productSize.set("Size")
+            self.productSupplier.set("Supplier")
+            self.productCategory.set("Category")
             self.productQty.delete(0, END)
             self.productPrice.delete(0, END)
         else:
             messagebox.showerror("Error", "All fields are required")
+
+    def Convert(self, list1): 
+        list2 = [] 
+        for x in list1: 
+            list2.append(x[0]) 
+        return list2
