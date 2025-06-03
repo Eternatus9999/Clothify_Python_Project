@@ -39,7 +39,7 @@ class AddOrder:
 
         self.searchitem = CTkEntry(master=itemview, placeholder_text="Search Item", width=200, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
 
-        self.searchitem.bind("<KeyRelease>", self.search)
+        self.searchitem.bind("<Return>", self.search)
 
         self.itemtable = ttk.Treeview(itemview, columns=("ID", "Name", "Size", "Quantity", "Price", "Category"), show='headings', height=15)
 
@@ -83,7 +83,12 @@ class AddOrder:
         View_Cart.ViewCart(self.total,self.cart)
 
     def search(self, event):
-        print(self.searchitem.get())
+        itemlist = self.itemtable.get_children()
+        for item in itemlist:
+            if(self.searchitem.get() == self.itemtable.item(item)["values"][1]):
+                self.itemtable.selection_set(item)
+                return
+        messagebox.showerror("Error", "Item Not Found")
 
     def add(self):
         selected = self.itemtable.item(self.itemtable.selection(),"values")
