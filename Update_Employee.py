@@ -10,7 +10,7 @@ class UpdateEmployee:
 
         title = CTkLabel(master=frame, text="Update Employee", font=("Arial", 80, 'bold'), fg_color="#A09E9E", text_color="#000000")
 
-        self.employees = ["ID"]
+        self.employees = self.Convert(DatabaseConnector.getEmployeeIds())
 
         self.employeeId = CTkComboBox(master = frame, values = self.employees, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40)
         self.employeeName = CTkEntry(master = frame, placeholder_text="Name", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
@@ -40,11 +40,37 @@ class UpdateEmployee:
         frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def search(self):
-        print(self.employeeId.get())
+        employee = DatabaseConnector.getEmployee(self.employeeId.get())
+
+        self.employeeName.delete(0, END)
+        self.employeeEmail.delete(0, END)
+        self.employeeAddress.delete(0, END)
+        self.employeeContact.delete(0, END)
+        self.employeePassword.delete(0, END)
+        self.employeeRePassword.delete(0, END)
+
+        self.employeeName.insert(0, employee[1])
+        self.employeeEmail.insert(0, employee[2])
+        self.employeeAddress.insert(0, employee[3])
+        self.employeeContact.insert(0, employee[4])
+        self.employeePassword.insert(0, employee[5])
+        self.employeeRePassword.insert(0, employee[5])
 
     def updateEmployee(self):
         if(self.employeePassword.get() == self.employeeRePassword.get()):
             DatabaseConnector.updateEmployee(self.employeeId.get(),self.employeeName.get(),self.employeeEmail.get(),self.employeeAddress.get(),self.employeeContact.get(),self.employeePassword.get())
             messagebox.showinfo("Success", "Employee updated successfully")
+            self.employeeName.delete(0, END)
+            self.employeeEmail.delete(0, END)
+            self.employeeAddress.delete(0, END)
+            self.employeeContact.delete(0, END)
+            self.employeePassword.delete(0, END)
+            self.employeeRePassword.delete(0, END)
         else:
             messagebox.showerror("Error", "Password does not match")
+
+    def Convert(self, list1): 
+        list2 = [] 
+        for x in list1: 
+            list2.append(x[0]) 
+        return list2
