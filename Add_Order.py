@@ -99,14 +99,19 @@ class AddOrder:
                 self.totalLabel.configure(text=("Total: "+str(self.total)))
 
     def placeOrder(self):
-        DatabaseConnector.insertOrder(self.orderId.get(), self.customerName.get(), self.paymentMethod.get(), self.total, date.today())
-        self.total = 0
-        self.customerName.delete(0, END)
-        self.qty.delete(0, END)
-        self.totalLabel.configure(text=("Total: "+str(self.total)))
-        self.editTable()
-        self.cart = []
-        DatabaseConnector.updateAllProducts(self.items)
+        if(self.customerName.get() == ""):
+            messagebox.showerror("Error", "Enter Customer Name")
+        elif(self.total !=0):
+            DatabaseConnector.insertOrder(self.orderId.get(), self.customerName.get(), self.paymentMethod.get(), self.total, date.today())
+            self.total = 0
+            self.customerName.delete(0, END)
+            self.qty.delete(0, END)
+            self.totalLabel.configure(text=("Total: "+str(self.total)))
+            self.editTable()
+            self.cart = []
+            DatabaseConnector.updateAllProducts(self.items)
+        else:
+            messagebox.showerror("Error", "Cart is empty")
 
     def editTable(self):
         for i in range(len(self.cart)):
