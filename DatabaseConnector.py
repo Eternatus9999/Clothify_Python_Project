@@ -130,7 +130,7 @@ def getSupplierId():
     mycursor.execute("SELECT id FROM supplier ORDER BY id DESC LIMIT 1")
     result = mycursor.fetchone()
     if result == None:
-        return (,)
+        return (0,)
     return result
 
 def getEmployeeId():
