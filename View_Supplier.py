@@ -1,7 +1,6 @@
 from customtkinter import *
 from tkinter import ttk, messagebox
 
-
 import DatabaseConnector
 
 class ViewSupplier:
