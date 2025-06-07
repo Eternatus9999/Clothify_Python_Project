@@ -130,4 +130,3 @@ class AddOrder:
         self.itemtable.delete(*self.itemtable.get_children())
         for item in self.items:
             self.itemtable.insert("", "end", values=item)
-            

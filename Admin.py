@@ -1,4 +1,7 @@
 from customtkinter import *
+
+import Report
+
 class Admin:
     def __init__(self):
 
@@ -31,9 +34,9 @@ class Admin:
         update_supplier_button = CTkButton(master=self.root, width=225, height=30, text="Update Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= self.updateSupplier)
         view_supplier_button = CTkButton(master=self.root, width=225, height=30, text="View Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.viewSupplier)
 
-        annual_report_button = CTkButton(master=self.root, width=225, height=30, text="Annual Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
-        monthly_report_button = CTkButton(master=self.root, width=225, height=30, text="Monthly Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
-        daily_report_button = CTkButton(master=self.root, width=225, height=30, text="Daily Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000")
+        annual_report_button = CTkButton(master=self.root, width=225, height=30, text="Annual Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.AnnualReport)
+        monthly_report_button = CTkButton(master=self.root, width=225, height=30, text="Monthly Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.MonthlyReport)
+        daily_report_button = CTkButton(master=self.root, width=225, height=30, text="Daily Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.DailyReport)
 
         title.place(relx=0.5, rely=0.06, anchor=CENTER)
         back_button.place(relx=0.1, rely=0.05, anchor=CENTER)
@@ -97,3 +100,15 @@ class Admin:
     def viewEmployee(self):
         import View_Employee
         View_Employee.ViewEmployee(self.frame)
+
+    def AnnualReport(self):
+        import Report
+        Report.Report(self.frame, "Annual")
+
+    def MonthlyReport(self):
+        import Report
+        Report.Report(self.frame, "Monthly")
+
+    def DailyReport(self):
+        import Report
+        Report.Report(self.frame, "Daily")
