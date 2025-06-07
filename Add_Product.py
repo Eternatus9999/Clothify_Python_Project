@@ -12,7 +12,7 @@ class AddProduct:
 
         self.suppliers = self.Convert(DatabaseConnector.getSupplierIds())
 
-        category = ["Mens", "Womens", "Kids"]
+        category = ["Gents", "Ladies", "Kids"]
 
         sizes = ["XXL","XXL","XL","L","M","S","XS"]
 
@@ -49,6 +49,7 @@ class AddProduct:
     def addProduct(self):
         if(self.productName.get() != "" and self.productSize.get() != "" and self.productSupplier.get() != "" and self.productQty.get() != "" and self.productPrice.get() != "" and self.productCategory.get() != ""):
             DatabaseConnector.insertProduct(self.productId.get(), self.productName.get(), self.productSize.get(), self.productQty.get(),  self.productPrice.get(), self.productCategory.get(), self.productSupplier.get())
+            self.updateSupplier(self.productSupplier.get())
             messagebox.showinfo("Success", "Product added successfully")
             self.productName.delete(0, END)
             self.productSize.set("Size")
@@ -64,3 +65,9 @@ class AddProduct:
         for x in list1: 
             list2.append(x[0]) 
         return list2
+
+    def updateSupplier(self, supplierId):
+        supplier = list(DatabaseConnector.searchSupplier(supplierId))
+        supplier[4] = supplier[4] + 1
+        DatabaseConnector.updateSupplier(supplier[0], supplier[1], supplier[2], supplier[3], supplier[4])
+

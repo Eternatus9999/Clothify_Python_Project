@@ -24,7 +24,7 @@ def load():
         mycursor.execute("DESCRIBE supplier")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE supplier (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), company VARCHAR(255), contact VARCHAR(255))")
+        mycursor.execute("CREATE TABLE supplier (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), company VARCHAR(255), contact VARCHAR(255), supply_times INT)")
     try:
         mycursor.execute("DESCRIBE employee")
         mycursor.fetchall()
@@ -40,7 +40,7 @@ def insertProduct(product_id,name,size,quantity,price,category,supplier):
     db.commit()
 
 def insertSupplier(supplier_id,name,company,contact):
-    mycursor.execute("INSERT INTO supplier (id, name, company, contact) VALUES (%s, %s, %s, %s)", (supplier_id,name,company,contact))
+    mycursor.execute("INSERT INTO supplier (id, name, company, contact, supply_times) VALUES (%s, %s, %s, %s, 0)", (supplier_id,name,company,contact))
     db.commit()
 
 def insertOrder(order_id,customer_name,method,total_price,date):
@@ -62,8 +62,8 @@ def updateAllProducts(items):
         mycursor.execute("UPDATE product SET quantity = %s WHERE id = %s", (item[3],item[0]))
         db.commit()
 
-def updateSupplier(id,name,company,contact):
-    mycursor.execute("UPDATE supplier SET name = %s, company = %s, contact = %s WHERE id = %s", (name,company,contact,id))
+def updateSupplier(id,name,company,contact,times):
+    mycursor.execute("UPDATE supplier SET name = %s, company = %s, contact = %s, supply_times = %s WHERE id = %s", (name,company,contact,times,id))
     db.commit()
 
 def updateEmployee(id,name,email,address,contact,password):
@@ -172,4 +172,11 @@ def getSupplierIds():
 def getEmployeeIds():
     mycursor.execute("SELECT id FROM employee")
     result = mycursor.fetchall()
+    return result
+
+# Get one Entity
+
+def searchSupplier(id):
+    mycursor.execute("SELECT * FROM supplier WHERE id = %s", (id,))
+    result = mycursor.fetchone()
     return result

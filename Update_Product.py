@@ -14,7 +14,7 @@ class UpdateProduct:
 
         self.products = self.Convert(DatabaseConnector.getProductIds())
 
-        category = ["Mens", "Womens", "Kids"]
+        category = ["Gents", "Ladies", "Kids"]
 
         title = CTkLabel(master=frame, text="Update Product", font=("Arial", 80, 'bold'), fg_color="#A09E9E", text_color="#000000")
 

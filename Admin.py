@@ -34,9 +34,8 @@ class Admin:
         update_supplier_button = CTkButton(master=self.root, width=225, height=30, text="Update Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command= self.updateSupplier)
         view_supplier_button = CTkButton(master=self.root, width=225, height=30, text="View Supplier", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.viewSupplier)
 
-        annual_report_button = CTkButton(master=self.root, width=225, height=30, text="Annual Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.AnnualReport)
-        monthly_report_button = CTkButton(master=self.root, width=225, height=30, text="Monthly Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.MonthlyReport)
-        daily_report_button = CTkButton(master=self.root, width=225, height=30, text="Daily Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.DailyReport)
+        product_report_button = CTkButton(master=self.root, width=225, height=30, text="Product Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.ProductReport)
+        supplier_report_button = CTkButton(master=self.root, width=225, height=30, text="Supplier Report", font=("Arial", 26, 'bold'), fg_color="#00FFFF", text_color="#000000", corner_radius=40, bg_color="#000000", command = self.SupplierReport)
 
         title.place(relx=0.5, rely=0.06, anchor=CENTER)
         back_button.place(relx=0.1, rely=0.05, anchor=CENTER)
@@ -54,10 +53,8 @@ class Admin:
         update_supplier_button.place(relx=0.1, rely=0.66, anchor=CENTER)
         view_supplier_button.place(relx=0.1, rely=0.72, anchor=CENTER)
 
-        annual_report_button.place(relx=0.1, rely=0.8, anchor=CENTER)
-        monthly_report_button.place(relx=0.1, rely=0.86, anchor=CENTER)
-        daily_report_button.place(relx=0.1, rely=0.92, anchor=CENTER)
-
+        product_report_button.place(relx=0.1, rely=0.8, anchor=CENTER)
+        supplier_report_button.place(relx=0.1, rely=0.86, anchor=CENTER)
         self.root.mainloop()
 
     def back(self):
@@ -101,14 +98,11 @@ class Admin:
         import View_Employee
         View_Employee.ViewEmployee(self.frame)
 
-    def AnnualReport(self):
+    def ProductReport(self):
         import Report
-        Report.Report(self.frame, "Annual")
+        Report.Report(self.frame, "Product")
 
-    def MonthlyReport(self):
+    def SupplierReport(self):
         import Report
-        Report.Report(self.frame, "Monthly")
+        Report.Report(self.frame, "Supplier")
 
-    def DailyReport(self):
-        import Report
-        Report.Report(self.frame, "Daily")
