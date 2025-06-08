@@ -9,7 +9,7 @@ class AddOrder:
 
     def __init__(self, root):
 
-        order_id = StringVar(value = "OR"+str(int(DatabaseConnector.getOrderId()[0].split("OR")[1]) + 1))
+        order_id = StringVar(value = "OR"+str(DatabaseConnector.getOrderId() + 1))
 
         self.total = 0
 

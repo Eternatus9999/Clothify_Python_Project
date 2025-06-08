@@ -114,31 +114,31 @@ def viewOrder():
 
 def getOrderId():
     mycursor.execute("SELECT id FROM orders ORDER BY id DESC LIMIT 1")
-    result = mycursor.fetchone()
+    result = list(mycursor.fetchone())
     if result == None:
         return (0,)
-    return result
+    return len(result)
 
 def getProductId():
     mycursor.execute("SELECT id FROM product ORDER BY id DESC LIMIT 1")
-    result = mycursor.fetchone()
+    result = list(mycursor.fetchone())
     if result == None:
         return (0,)
-    return result
+    return len(result)
 
 def getSupplierId():
     mycursor.execute("SELECT id FROM supplier ORDER BY id DESC LIMIT 1")
-    result = mycursor.fetchone()
+    result = list(mycursor.fetchone())
     if result == None:
         return (0,)
-    return result
+    return len(result)
 
 def getEmployeeId():
     mycursor.execute("SELECT id FROM employee ORDER BY id DESC LIMIT 1")
-    result = mycursor.fetchone()
+    result = list(mycursor.fetchone())
     if result == None:
         return (0,)
-    return result
+    return len(result)
 
 # Get Details
 

@@ -8,6 +8,8 @@ class AddProduct:
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#A09E9E")
 
+        product_id = StringVar(value = "PD"+str(DatabaseConnector.getProductId()+1))
+
         index = 0 
 
         self.suppliers = self.Convert(DatabaseConnector.getSupplierIds())
@@ -18,7 +20,7 @@ class AddProduct:
 
         title = CTkLabel(master=frame, text="Add Product", font=("Arial", 80, 'bold'), fg_color="#A09E9E", text_color="#000000")
 
-        self.productId = CTkEntry(master=frame, placeholder_text="ID", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
+        self.productId = CTkEntry(master=frame, textvariable = product_id, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40, state = "readonly")
         self.productName = CTkEntry(master=frame, placeholder_text="Name", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         self.productSize = CTkComboBox(master=frame, values=sizes, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40, state= 'readonly')
         self.productSupplier = CTkComboBox(master=frame, values=self.suppliers, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", button_color= "#00FFFF", font=("Arial", 20), corner_radius=40, state= 'readonly')

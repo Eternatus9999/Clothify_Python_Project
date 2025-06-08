@@ -8,9 +8,11 @@ class AddSupplier:
 
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#A09E9E")
 
+        supplier_id = StringVar(value="SP"+ str(DatabaseConnector.getSupplierId()+1))
+
         title = CTkLabel(master=frame, text="Add Supplier", font=("Arial", 80, 'bold'), fg_color="#A09E9E", text_color="#000000")
 
-        self.supplierId = CTkEntry(master = frame, placeholder_text="ID", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
+        self.supplierId = CTkEntry(master = frame, textvariable = supplier_id, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40, state = "readonly")
         self.supplierName = CTkEntry(master = frame, placeholder_text="Name", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         self.supplierCompany = CTkEntry(master = frame, placeholder_text="Company", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         self.supplierContact = CTkEntry(master = frame, placeholder_text="Contact", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)

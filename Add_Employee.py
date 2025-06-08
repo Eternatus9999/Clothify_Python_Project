@@ -6,11 +6,13 @@ import DatabaseConnector
 class AddEmployee:
     def __init__(self,root):
 
+        employee_id = StringVar(value = "EM"+str(DatabaseConnector.getEmployeeId()+1))
+
         frame = CTkFrame(master= root, width=1000, height=680, fg_color="#A09E9E")
 
         title = CTkLabel(master=frame, text="Add Employee", font=("Arial", 80, 'bold'), fg_color="#A09E9E", text_color="#000000")
 
-        self.employeeId = CTkEntry(master = frame, placeholder_text="ID", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
+        self.employeeId = CTkEntry(master = frame, textvariable = employee_id, width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40, state = "readonly")
         self.employeeName = CTkEntry(master = frame, placeholder_text="Name", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         self.employeeEmail = CTkEntry(master = frame, placeholder_text="Email", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
         self.employeeAddress = CTkEntry(master = frame, placeholder_text="Address", width=300, height=50, fg_color="#FFFFFF", text_color="#000000", font=("Arial", 20), corner_radius=40)
@@ -48,3 +50,5 @@ class AddEmployee:
             self.employeeRePassword.delete(0, END)
         else:
             messagebox.showerror("Error", "Password does not match")
+
+    
