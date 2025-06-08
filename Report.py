@@ -11,10 +11,11 @@ class Report:
         fig, ax = plt.subplots()
         if(type == "Product"):
             orders = DatabaseConnector.viewProduct()
+            category_amount = self.organizeCategoryAmount(orders)
             category = self.organizeCategory(orders)
             title = CTkLabel(master=self.frame, text="Product Report", font=("Arial", 80, 'bold'), fg_color="#A09E9E", text_color="#000000")
             title.place(relx=0.5, rely=0.1, anchor=CENTER)
-            ax.pie(category, labels=["Gents","Ladies","Kids"], autopct='%1.1f%%', radius=1.25, startangle=90, textprops={'fontsize': 20, 'color': 'black'})
+            ax.pie(category_amount, labels=category, autopct='%1.1f%%', radius=1.25, startangle=90, textprops={'fontsize': 20, 'color': 'black'})
         elif(type == "Supplier"):
             suppliers = DatabaseConnector.viewSupplier()
             amount = self.organizeSuppliersAmount(suppliers)
@@ -28,7 +29,7 @@ class Report:
         canvas.get_tk_widget().place(relx=0.5, rely=0.6, anchor=CENTER)
         self.frame.place(relx=0.5, rely=0.5, anchor=CENTER)
 
-    def organizeCategory(self, orders):
+    def organizeCategoryAmount(self, orders):
         category = [0,0,0]
         for order in orders:
             if(order[5] =="Gents"):
@@ -37,6 +38,17 @@ class Report:
                 category[1] = category[1] + (order[3])   
             else:
                 category[2] = category[2] + (order[3])
+        return category
+
+    def organizeCategory(self, orders):
+        category = ["","",""]
+        for order in orders:
+            if(order[5] == "Gents"):
+                category[0] = "Gents"
+            elif(order[5] == "Ladies"):
+                category[1] = "Ladies"
+            else:
+                category[2] = "Kids"
         return category
 
     def organizeSuppliersAmount(self, suppliers):
