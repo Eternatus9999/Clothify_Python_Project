@@ -12,6 +12,8 @@ class MainPage:
 
         self.root.geometry("600x400+700+300")
 
+        self.root.iconbitmap("Images/Logo.ico")
+
         self.root.resizable(False, False)
 
         self.root.config(bg="#000000")

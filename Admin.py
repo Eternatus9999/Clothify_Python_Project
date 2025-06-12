@@ -10,6 +10,8 @@ class Admin:
 
         self.root.geometry("1300x800+300+100")
 
+        self.root.iconbitmap("Images/Logo.ico")
+
         self.root.resizable(False, False)
 
         self.root.config(bg="#000000")
