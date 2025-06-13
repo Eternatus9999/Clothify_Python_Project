@@ -14,7 +14,7 @@ def load():
         mycursor.execute("DESCRIBE product")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE product (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), size VARCHAR(255), quantity INT, price INT, category VARCHAR(255), supplier VARCHAR(255))")
+        mycursor.execute("CREATE TABLE product (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), size VARCHAR(255), quantity INT, price INT, category VARCHAR(255), supplier VARCHAR(255), FOREIGN KEY (supplier) REFERENCES supplier(id))")
     try:
         mycursor.execute("DESCRIBE orders")
         mycursor.fetchall()
