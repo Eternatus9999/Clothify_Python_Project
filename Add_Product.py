@@ -59,6 +59,7 @@ class AddProduct:
             self.productCategory.set("Category")
             self.productQty.delete(0, END)
             self.productPrice.delete(0, END)
+            self.productId.set("PD"+str(DatabaseConnector.getProductId()+1))
         else:
             messagebox.showerror("Error", "All fields are required")
 

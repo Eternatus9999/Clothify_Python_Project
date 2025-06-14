@@ -114,6 +114,7 @@ class AddOrder:
             self.totalLabel.configure(text=("Total: "+str(self.total)))
             self.editTable()
             self.cart = []
+            self.orderId.configure(textvariable = StringVar(value = "OR"+str(DatabaseConnector.getOrderId()+1)))
             DatabaseConnector.updateAllProducts(self.items)
             messagebox.showinfo("Success", "Order Placed Successfully")
         else:

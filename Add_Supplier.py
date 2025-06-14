@@ -33,9 +33,10 @@ class AddSupplier:
     def addSupplier(self):
         if(self.supplierName.get() == "" or self.supplierCompany.get() == "" or self.supplierContact.get() == ""):
             messagebox.showerror("Error", "Please fill all the details")
-            self.supplierName.delete(0, END)
-            self.supplierCompany.delete(0, END)
-            self.supplierContact.delete(0, END)
         else:
             DatabaseConnector.insertSupplier(self.supplierId.get(), self.supplierName.get(), self.supplierCompany.get(), self.supplierContact.get())
             messagebox.showinfo("Success", "Supplier added successfully")
+            self.supplierName.delete(0, END)
+            self.supplierCompany.delete(0, END)
+            self.supplierContact.delete(0, END)
+            self.supplierId.set("SP"+str(DatabaseConnector.getSupplierId()+1))

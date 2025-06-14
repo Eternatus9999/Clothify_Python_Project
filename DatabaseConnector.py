@@ -11,20 +11,20 @@ mycursor = db.cursor()
 
 def load():
     try:
-        mycursor.execute("DESCRIBE product")
+        mycursor.execute("DESCRIBE supplier")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE product (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), size VARCHAR(255), quantity INT, price INT, category VARCHAR(255), supplier VARCHAR(255), FOREIGN KEY (supplier) REFERENCES supplier(id))")
+        mycursor.execute("CREATE TABLE supplier (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), company VARCHAR(255), contact VARCHAR(255), supply_times INT)")
     try:
         mycursor.execute("DESCRIBE orders")
         mycursor.fetchall()
     except:
         mycursor.execute("CREATE TABLE orders (id VARCHAR(255) PRIMARY KEY, customer_name VARCHAR(255), method VARCHAR(255), total_price INT, order_date DATE)")
     try:
-        mycursor.execute("DESCRIBE supplier")
+        mycursor.execute("DESCRIBE product")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE supplier (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), company VARCHAR(255), contact VARCHAR(255), supply_times INT)")
+        mycursor.execute("CREATE TABLE product (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), size VARCHAR(255), quantity INT, price INT, category VARCHAR(255), supplier VARCHAR(255), FOREIGN KEY (supplier) REFERENCES supplier(id))")
     try:
         mycursor.execute("DESCRIBE employee")
         mycursor.fetchall()
@@ -120,25 +120,25 @@ def getOrderId():
     return len(result)
 
 def getProductId():
-    mycursor.execute("SELECT id FROM product ORDER BY id DESC LIMIT 1")
-    result = list(mycursor.fetchone())
+    mycursor.execute("SELECT id FROM product")
+    result = mycursor.fetchone()
     if result == None:
-        return (0,)
-    return len(result)
+        return 0
+    return len(list(result))
 
 def getSupplierId():
-    mycursor.execute("SELECT id FROM supplier ORDER BY id DESC LIMIT 1")
-    result = list(mycursor.fetchone())
+    mycursor.execute("SELECT id FROM supplier")
+    result = mycursor.fetchone()
     if result == None:
-        return (0,)
-    return len(result)
+        return 0
+    return len(list(result))
 
 def getEmployeeId():
-    mycursor.execute("SELECT id FROM employee ORDER BY id DESC LIMIT 1")
-    result = list(mycursor.fetchone())
+    mycursor.execute("SELECT id FROM employee")
+    result = mycursor.fetchone()
     if result == None:
-        return (0,)
-    return len(result)
+        return 0
+    return len(list(result))
 
 # Get Details
 
