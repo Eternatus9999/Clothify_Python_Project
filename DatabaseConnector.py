@@ -29,7 +29,7 @@ def load():
         mycursor.execute("DESCRIBE employee")
         mycursor.fetchall()
     except:
-        mycursor.execute("CREATE TABLE employee (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255), password VARCHAR(255))")
+        mycursor.execute("CREATE TABLE employee (id VARCHAR(255) PRIMARY KEY, name VARCHAR(255), email VARCHAR(255), address VARCHAR(255), contact VARCHAR(255), password VARBINARY(255))")
 
     db.commit()
 
@@ -114,10 +114,10 @@ def viewOrder():
 
 def getOrderId():
     mycursor.execute("SELECT id FROM orders ORDER BY id DESC LIMIT 1")
-    result = list(mycursor.fetchone())
+    result = mycursor.fetchone()
     if result == None:
-        return (0,)
-    return len(result)
+        return 0
+    return len(list(result))
 
 def getProductId():
     mycursor.execute("SELECT id FROM product")

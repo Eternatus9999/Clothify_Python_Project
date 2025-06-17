@@ -2,6 +2,7 @@ from customtkinter import *
 from tkinter import messagebox
 
 import DatabaseConnector
+import Encryptor
 
 class AddEmployee:
     def __init__(self,root):
@@ -40,7 +41,7 @@ class AddEmployee:
         if(self.employeeName.get() == "" or self.employeeEmail.get() == "" or self.employeeAddress.get() == "" or self.employeeContact.get() == "" or self.employeePassword.get() == "" or self.employeeRePassword.get() == ""):
             messagebox.showerror("Error", "All fields are required")
         elif(self.employeePassword.get() == self.employeeRePassword.get()):
-            DatabaseConnector.insertEmployee(self.employeeId.get(), self.employeeName.get(), self.employeeEmail.get(), self.employeeAddress.get(), self.employeeContact.get(), self.employeePassword.get())
+            DatabaseConnector.insertEmployee(self.employeeId.get(), self.employeeName.get(), self.employeeEmail.get(), self.employeeAddress.get(), self.employeeContact.get(), Encryptor.encrypt(self.employeePassword.get()))
             messagebox.showinfo("Success", "Employee added successfully")
             self.employeeName.delete(0, END)
             self.employeeEmail.delete(0, END)

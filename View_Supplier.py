@@ -21,10 +21,10 @@ class ViewSupplier:
         self.table.heading("Company", text="Email")
         self.table.heading("Contact", text="Contact")
 
-        self.table.columns("ID", anchor=CENTER)
-        self.table.columns("Name", anchor=CENTER)
-        self.table.columns("Company", anchor=CENTER)
-        self.table.columns("Contact", anchor=CENTER)
+        self.table.column("ID", anchor=CENTER)
+        self.table.column("Name", anchor=CENTER)
+        self.table.column("Company", anchor=CENTER)
+        self.table.column("Contact", anchor=CENTER)
 
         for supplier in self.suppliers:
             self.table.insert("", "end", values=supplier)

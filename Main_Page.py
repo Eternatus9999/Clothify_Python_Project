@@ -2,7 +2,7 @@ from customtkinter import *
 from tkinter import messagebox
 
 import DatabaseConnector
-
+import Encryptor
 class MainPage:
     def __init__(self):
         
@@ -51,6 +51,7 @@ class MainPage:
     def isEmployee(self, userid, password):
         employees = DatabaseConnector.viewEmployee()
         for employee in employees:
-            if(employee[0] == userid and employee[5] == password):
+            print(Encryptor.decrypt(employee[5]))
+            if(employee[0] == userid and Encryptor.decrypt(employee[5]) == bytes(password, 'utf-8')):
                 return True
         return False
