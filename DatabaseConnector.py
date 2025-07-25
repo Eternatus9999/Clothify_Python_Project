@@ -155,7 +155,7 @@ def getSupplier(id):
 def getEmployee(id):
     mycursor.execute("SELECT * FROM employee WHERE id = %s", (id,))
     result = mycursor.fetchone()
-    return resul
+    return result
 
 # Get Ids
 
