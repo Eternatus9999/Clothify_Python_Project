@@ -39,4 +39,4 @@ class AddSupplier:
             self.supplierName.delete(0, END)
             self.supplierCompany.delete(0, END)
             self.supplierContact.delete(0, END)
-            self.supplierId.set("SP"+str(DatabaseConnector.getSupplierId()+1))
+            self.supplierId.configure(textvariable="SP"+str(DatabaseConnector.getSupplierId()+1))
